@@ -1,4 +1,3 @@
-# HelpHive-Complaint_Management_System_Dashboard
 # HelpHive - Complaint Management System Dashboard
 
 Welcome to the HelpHive Complaint Management System Dashboard repository. This project was developed during my internship at Tata Technologies Ltd. and aims to streamline the process of handling customer complaints using ASP.NET Core and MS-SQL.
@@ -8,11 +7,8 @@ Welcome to the HelpHive Complaint Management System Dashboard repository. This p
 1. [Project Overview](#project-overview)
 2. [Key Features](#key-features)
 3. [Technologies Used](#technologies-used)
-4. [Installation](#installation)
-5. [Usage](#usage)
-6. [Screenshots](#screenshots)
-7. [Contributing](#contributing)
-8. [License](#license)
+4. [Usage](#usage)
+5. [Screenshots](#screenshots)
 
 ## Project Overview
 
@@ -45,3 +41,18 @@ HelpHive is a robust solution designed to handle customer grievances efficiently
 - **jQuery** and **jQuery DataTables** for front-end interactivity
 - **SweetAlert** for custom alerts
 - **Microsoft.AspNetCore.Identity.EntityFrameworkCore** for secure user authentication
+
+## Usage
+
+1. **Login Screen**: Enter your credentials to access the dashboard.
+2. **Register a Complaint**: Navigate to 'My Complaints' and click 'Add New' to register a complaint.
+3. **Manage Complaints**: Admins can view and update complaints from the dashboard.
+4. **Super Admin Functions**: Manage users, priorities, categories, statuses, and view audit logs from the Super Admin dashboard.
+
+## Screenshots
+
+![Login Screen](screenshots/login.png)
+![Dashboard](screenshots/dashboard.png)
+![Complaint Form](screenshots/complaint_form.png)
+![Admin Dashboard](screenshots/admin_dashboard.png)
+![Super Admin Dashboard](screenshots/super_admin_dashboard.png)
