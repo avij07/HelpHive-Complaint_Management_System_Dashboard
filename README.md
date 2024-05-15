@@ -54,5 +54,4 @@ HelpHive is a robust solution designed to handle customer grievances efficiently
 ![Login Screen](screenshots/login.png)
 ![Dashboard](screenshots/dashboard.png)
 ![Complaint Form](screenshots/complaint_form.png)
-![Admin Dashboard](screenshots/admin_dashboard.png)
 ![Super Admin Dashboard](screenshots/super_admin_dashboard.png)
