@@ -1,6 +1,6 @@
 # HelpHive - Complaint Management System Dashboard
 
-Welcome to the HelpHive Complaint Management System Dashboard repository. This project was developed during my internship at Tata Technologies Ltd. and aims to streamline the process of handling customer complaints using ASP.NET Core and MS-SQL.
+Welcome to the HelpHive Complaint Management System Dashboard repository. This project was developed during my internship at Tata Technologies Ltd. and aims to streamline the process of handling customer complaints using ASP.NET Core, its MVC architechture and MS-SQL for database.
 
 ## Table of Contents
 
