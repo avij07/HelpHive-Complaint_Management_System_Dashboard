@@ -1,0 +1,22 @@
+﻿<div class="modal fade" id="PrintModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-md-8">
+                    <h3 id="titlePrintModal" class="modal-title">Title</h3>
+                </div>
+                <div class="col-md-pull-4 pull-right">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">X</button>
+                </div>
+            </div>
+            <div class="modal-body" id="PrintModalDiv">
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="DownloadTranDetailsPDFAdmin(document.getElementById('tranID').value)"
+                        class="btn btn-danger">
+                    Download PDF
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

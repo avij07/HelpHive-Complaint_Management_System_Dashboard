@@ -1,0 +1,126 @@
+﻿<nav aria-label="..." id="navIndex">
+    <ul class="pagination">
+
+        @*Previous function*@
+        @{
+            var j = ViewBag.currentPage - 1;
+            if (ViewBag.currentPage == 1 || ViewBag.currentPage == 0)
+            {
+                <li class="page-item disabled">
+                    <a asp-page="/pagination" asp-route-currentpage="1" class="page-link">
+                        <span class="glyphicon glyphicon-backward"></span>
+                    </a>
+                </li>
+                <li class="page-item disabled">
+                    <a asp-page="/pagination" asp-route-currentpage="@j" class="page-link">Previous</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item active">
+                    <a asp-page="/pagination" asp-route-currentpage="1" class="page-link">
+                        <span class="glyphicon glyphicon-backward"></span>
+                    </a>
+                </li>
+                <li class="page-item active">
+                    <a asp-page="/pagination" asp-route-currentpage="@j" class="page-link">Previous</a>
+                </li>
+            }
+        }
+
+
+        @*Paging function: 1 to 5 load *@
+        @if (ViewBag.TotalPages < 6)
+        {
+            for (var i = 1; i <= ViewBag.TotalPages; i++)
+            {
+                if (ViewBag.currentPage == 0 && i == 1)
+                {
+                    <li class="page-item active">
+                        <a asp-page="/pagination" asp-route-currentpage="1" class="page-link">1</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item @(i == ViewBag.currentPage ? "active" : "")">
+                        <a asp-page="/pagination" asp-route-currentpage="@i" class="page-link">@i</a>
+                    </li>
+                }
+            }
+        }
+        else if (ViewBag.currentPage < 6 && ViewBag.TotalPages > 5)
+        {
+            for (var i = 1; i <= 5; i++)
+            {
+                if (ViewBag.currentPage == 0 && i == 1)
+                {
+                    <li class="page-item active">
+                        <a asp-page="/pagination" asp-route-currentpage="1" class="page-link">1</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item @(i == ViewBag.currentPage ? "active" : "")">
+                        <a asp-page="/pagination" asp-route-currentpage="@i" class="page-link">@i</a>
+                    </li>
+                }
+            }
+        }
+        else
+        {
+            var startPage = ViewBag.currentPage - 4;
+            for (var i = startPage; i <= startPage + 4; i++)
+            {
+                <li class="page-item @(i == ViewBag.currentPage ? "active" : "")">
+                    <a asp-page="/pagination" asp-route-currentpage="@i" class="page-link">@i</a>
+                </li>
+            }
+        }
+
+
+        @*Next function*@
+        @{
+            var k = ViewBag.currentPage + 1;
+            if (ViewBag.currentPage == ViewBag.TotalPages)
+            {
+                <li class="page-item disabled">
+                    <a asp-page="/pagination" asp-route-currentpage="@k" class="page-link">Next</a>
+                </li>
+                <li class="page-item disabled">
+                    <a asp-page="/pagination" asp-route-currentpage="@ViewBag.TotalPages" class="page-link">
+                        <span class="glyphicon glyphicon-forward"></span>
+                    </a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item active">
+                    <a asp-page="/pagination" asp-route-currentpage="@k" class="page-link">Next</a>
+                </li>
+                <li class="page-item active">
+                    <a asp-page="/pagination" asp-route-currentpage="@ViewBag.TotalPages" class="page-link">
+                        <span class="glyphicon glyphicon-forward"></span>
+                    </a>
+                </li>
+            }
+        }
+        <li class="page-item disabled">
+            <a asp-page="/pagination" class="page-link">@ViewBag.TotalShowing</a>
+        </li>
+    </ul>
+</nav>
+
+
+<style>
+    .pagination > li:first-child > a, .pagination > li:first-child > span {
+        /*background: #00ff90;*/
+    }
+
+    .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
+        z-index: 3;
+        color: #fff;
+        cursor: default;
+        background-color: #337ab7;
+        border-color: #fff;
+    }
+</style>

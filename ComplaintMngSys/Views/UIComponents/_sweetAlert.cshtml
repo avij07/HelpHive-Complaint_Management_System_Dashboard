@@ -1,0 +1,30 @@
+﻿@if (TempData["successAlert"] != null)
+{
+    <script src="~/js/sweetalert.min.js"></script>
+    <script>
+        Swal.fire({
+            title: "@TempData["successAlert"]",
+            text: "Alert!",
+            type: "success"
+        });
+    </script>
+}
+
+
+@if (TempData["errorAlert"] != null)
+{
+    <div class="alert btn-primary">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <p>@TempData["errorAlert"]</p>
+    </div>
+}
+
+
+
+<script>
+    $(document).ready(function () {
+        setTimeout(function () {
+            $(".alert").alert('close');
+        }, 5000);
+    });
+</script>

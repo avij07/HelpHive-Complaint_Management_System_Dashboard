@@ -1,0 +1,68 @@
+﻿@model ComplaintMngSys.Models.CommonViewModel.DefaultIdentityOptionsCRUDViewModel
+@{
+    ViewData["Title"] = "Default Identity Options";
+}
+
+<div class="wrapper">
+    <div class="panel panel-hash">
+        <div class="panel-heading">
+            <div style="display: inline-block;">
+                <h4 class="pull-right"><b>Default Identity Options</b></h4>
+            </div>
+        </div>
+        <partial name="~/Views/UIComponents/_bootstrapAlert.cshtml" />
+        <div class="panel-body scroll panel-height">
+            <table class="ItemTranTable">
+                <tr>
+                    <th>
+                    </th>
+                    <td>
+                        <a class="btn btn-danger btn-sm" asp-action="Edit">Edit</a>
+                    </td>
+                </tr>
+
+                <tr><th>@Html.DisplayNameFor(model => model.PasswordRequireDigit)</th><td>@Model.PasswordRequireDigit</td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.PasswordRequiredLength)</th><td>@Model.PasswordRequiredLength</td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.PasswordRequireNonAlphanumeric)</th><td>@Model.PasswordRequireNonAlphanumeric</td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.PasswordRequireUppercase)</th><td>@Model.PasswordRequireUppercase</td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.PasswordRequireLowercase)</th><td>@Model.PasswordRequireLowercase</td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.PasswordRequiredUniqueChars)</th><td>@Model.PasswordRequiredUniqueChars</td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.LockoutDefaultLockoutTimeSpanInMinutes)</th><td>@Model.LockoutDefaultLockoutTimeSpanInMinutes</td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.LockoutMaxFailedAccessAttempts)</th><td>@Model.LockoutMaxFailedAccessAttempts</td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.LockoutAllowedForNewUsers)</th><td>@Model.LockoutAllowedForNewUsers</td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.UserRequireUniqueEmail)</th><td>@Model.UserRequireUniqueEmail</td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.SignInRequireConfirmedEmail)</th><td>@Model.SignInRequireConfirmedEmail</td></tr>
+
+                <tr><th>@Html.DisplayNameFor(model => model.CookieHttpOnly)</th><td>@Model.CookieHttpOnly</td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.CookieExpiration)</th><td>@Model.CookieExpiration</td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.CookieExpireTimeSpan)</th><td>@Model.CookieExpireTimeSpan</td></tr>
+
+                <tr><th>@Html.DisplayNameFor(model => model.LoginPath)</th><td>@Model.LoginPath</td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.LogoutPath)</th><td>@Model.LogoutPath</td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.AccessDeniedPath)</th><td>@Model.AccessDeniedPath</td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.SlidingExpiration)</th><td>@Model.SlidingExpiration</td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.CreatedDate)</th><td>@Model.CreatedDate</td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.ModifiedDate)</th><td>@Model.ModifiedDate</td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.CreatedBy)</th><td>@Model.CreatedBy</td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.ModifiedBy)</th><td>@Model.ModifiedBy</td></tr>
+                <tr><th>@Html.DisplayNameFor(model => model.Cancelled)</th><td>@Model.Cancelled</td></tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    .panel-heading {
+        padding: 0px 0px 0px 25px;
+    }
+
+    .panel-body {
+        padding: 0px 25px 0px 25px;
+    }
+
+    .h4 {
+        margin-top: 1px;
+        margin-bottom: 1px;
+    }
+</style>
+

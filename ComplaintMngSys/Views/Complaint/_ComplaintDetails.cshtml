@@ -1,0 +1,24 @@
+@model ComplaintMngSys.Models.ComplaintViewModel.ComplaintManageViewModel
+
+<table class="ItemTranTable">
+    <tr><th>Id</th><td>@Model.ComplaintGridViewModel.Id</td></tr>
+    <tr><th>Code</th><td>@Model.ComplaintGridViewModel.Code</td></tr>
+    <tr><th>Name</th><td>@Model.ComplaintGridViewModel.Name</td></tr>
+    <tr><th>Description</th><td>@Model.ComplaintGridViewModel.Description</td></tr>
+    <tr><th>Category</th><td>@Model.ComplaintGridViewModel.CategoryName</td></tr>
+    <tr><th>Priority</th><td>@Model.ComplaintGridViewModel.Priority</td></tr>
+    <tr><th>Assign To</th><td>@Model.ComplaintGridViewModel.AssignTo</td></tr>
+    <tr>
+        <th style="background-color:rebeccapurple">Status</th>
+        <td>@Model.ComplaintGridViewModel.Status</td>
+    </tr>
+    <tr><th>Created Date</th><td>@Model.ComplaintGridViewModel.CreatedDate</td></tr>
+    <tr><th>Due Date</th><td>@Model.ComplaintGridViewModel.DueDate</td></tr>
+    <tr><th>Modified Date</th><td>@Model.ComplaintGridViewModel.ModifiedDate</td></tr>
+    <tr><th>Remarks</th><td>@Model.ComplaintGridViewModel.Remarks</td></tr>
+    <tr><th>Complainant</th><td>@Model.ComplaintGridViewModel.Complainant</td></tr>
+    <tr><th>Modified Date</th><td>@Model.ComplaintGridViewModel.ModifiedDate</td></tr>
+    <tr><th>Created By</th><td>@Model.ComplaintGridViewModel.CreatedBy</td></tr>
+    <tr><th>Modified By</th><td>@Model.ComplaintGridViewModel.ModifiedBy</td></tr>
+    <tr><th>Cancelled</th><td>@Model.ComplaintGridViewModel.Cancelled</td></tr>
+</table>

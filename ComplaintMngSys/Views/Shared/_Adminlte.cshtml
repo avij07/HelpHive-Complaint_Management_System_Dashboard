@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject ComplaintMngSys.Data.ApplicationDbContext Context
+@{
+    ApplicationUser _ApplicationUser = await UserManager.GetUserAsync(User);
+    LoginViewModel _LoginViewModel = new LoginViewModel();
+    _LoginViewModel.Id = _ApplicationUser.Id;
+}
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="~/images/favicon.ico" type="image/gif" sizes="16x16">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Complaint Management</title>
+
+    <link rel="stylesheet" href="~/AdminLTE/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/AdminLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="~/AdminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+
+    <script src="~/AdminLTE/plugins/jquery/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/AdminLTE/plugins/jqvmap/jqvmap.min.css">
+    <link rel="stylesheet" href="~/AdminLTE/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="~/AdminLTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="~/AdminLTE/plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="~/AdminLTE/plugins/summernote/summernote-bs4.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/DataTables/datatables.css" rel="stylesheet" />
+    <link href="~/DataTables/buttons.dataTables.css" rel="stylesheet" />
+    <link href="~/lib/toastr/toastr.min.css" rel="stylesheet" />
+
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+        <partial name="_AdminlteMainHeader" model="_LoginViewModel" />
+        <partial name="_AdminlteMainSidebar" model="_ApplicationUser" />
+
+        <div class="content-wrapper">
+            <main role="main" class="content">
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </main>
+        </div>
+
+
+        <partial name="~/Views/UIComponents/_SmallModal.cshtml" />
+        <partial name="~/Views/UIComponents/_MediumModal.cshtml" />
+        <partial name="~/Views/UIComponents/_BigModal.cshtml" />
+        <partial name="~/Views/UIComponents/_ExtraBigModal.cshtml" />
+        <partial name="~/Views/UIComponents/_ImageViewModal.cshtml" />
+
+        <partial name="_AdminlteFooter" />
+    </div>
+
+
+    <script src="~/AdminLTE/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="~/AdminLTE/plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="~/AdminLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <script src="~/AdminLTE/dist/js/adminlte.js"></script>
+
+    <script src="~/lib/sweetalert.min.js"></script>
+    <script src="~/lib/sweetalert2/sweetalert2.js"></script>
+    <script src="~/lib/toastr/toastr.min.js"></script>
+    <script src="~/js/site.js"></script>
+    <script src="~/js/zconfig.js"></script>
+
+
+
+
+    <script src="~/DataTables/datatables.js"></script>
+    <script src="~/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/DataTables/buttons.dataTables.js"></script>
+
+    <script src="~/DataTables/Export/pdfmake-0.1.36/pdfmake.js"></script>
+    <script src="~/DataTables/Export/pdfmake-0.1.36/vfs_fonts.js"></script>
+    <script src="~/DataTables/Export/Buttons-1.6.5/js/buttons.html5.min.js"></script>
+    <script src="~/DataTables/Export/Buttons-1.6.5/js/buttons.print.min.js"></script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+
+    <script src="~/lib/jsPDF/jspdf.umd.min.js"></script>
+    <script src="~/lib/jsPDF/html2canvas.min.js"></script>
+
+    <link href="~/AdminLTE/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <script src="~/AdminLTE/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script src="~/lib/loadingoverlay.js"></script>
+</body>
+
+</html>

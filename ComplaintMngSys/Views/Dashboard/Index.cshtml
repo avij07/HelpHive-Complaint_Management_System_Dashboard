@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+<div class="wrapper">
+    @{
+        var _IsInRole = User.IsInRole("Admin");
+        if (_IsInRole)
+        {
+            <partial name="_DashboardSummary" />
+            <partial name="_PieChartComplaintStatus " />
+            <partial name="_RecentComplaint" />
+        }
+        else
+        {
+            <partial name="~/Views/Notification/_NotificationIndex.cshtml" />
+        }
+    }
+</div>
+
+<script src="~/js/Complaint/Complaint_Common.js"></script>
+<script>
+    setTimeout(function () {
+        SaveMetaData();
+    }, 500);
+</script>

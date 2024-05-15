@@ -1,0 +1,27 @@
+@model ComplaintMngSys.Models.LoginHistoryViewModel.LoginHistoryCRUDViewModel
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="ItemTranTable">
+            <tr><th>Id</th><td>@Model.Id</td></tr>
+            <tr><th>User Name</th><td>@Model.UserName</td></tr>
+            <tr><th>Login Time</th><td>@Model.LoginTime</td></tr>
+            <tr><th>Logout Time</th><td>@Model.LogoutTime</td></tr>
+            <tr><th>Duration</th><td>@Model.Duration</td></tr>
+            <tr><th>PublicIP</th><td>@Model.PublicIP</td></tr>
+            <tr><th>Latitude</th><td>@Model.Latitude</td></tr>
+            <tr><th>Longitude</th><td>@Model.Longitude</td></tr>
+            <tr><th>Browser</th><td>@Model.Browser</td></tr>
+            <tr><th>Operating System</th><td>@Model.OperatingSystem</td></tr>
+            <tr><th>Device</th><td>@Model.Device</td></tr>
+
+            <tr><th>Action</th><td>@Model.Action</td></tr>
+            <tr><th>Action Status</th><td>@Model.ActionStatus</td></tr>
+            <tr><th>Created Date</th><td>@Model.CreatedDate</td></tr>
+            <tr><th>Modified Date</th><td>@Model.ModifiedDate</td></tr>
+            <tr><th>Created By</th><td>@Model.CreatedBy</td></tr>
+            <tr><th>Modified By</th><td>@Model.ModifiedBy</td></tr>
+            <tr><th>Cancelled</th><td>@Model.Cancelled</td></tr>
+        </table>
+    </div>
+</div>

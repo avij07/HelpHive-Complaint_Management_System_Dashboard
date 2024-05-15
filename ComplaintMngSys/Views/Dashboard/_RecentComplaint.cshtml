@@ -1,0 +1,44 @@
+﻿@model ComplaintMngSys.Models.DashboardViewModel.DashboardDataViewModel
+
+<hr />
+
+<div class="panel panel-hash">
+    <div class="panel-heading"><h4><b>Recent Complaint</b></h4></div>
+    <div class="panel-body scroll panel-height">
+        <table class="CustomBlueTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Assign To</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Complainant</th>
+                    <th>Created Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var item in Model.ComplaintList)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>
+                                <a href='#' class='btn btn-link btn-xs' onclick=Details('@item.Id')>@item.Name</a>
+                            </td>
+                            <td>@item.CategoryName</td>
+                            <td>@item.AssignTo</td>
+                            <td>@item.Priority</td>
+                            <td>@item.Status</td>
+                            <td>@item.Complainant</td>
+                            <td>@item.CreatedDate.ToString("dd MMMM yyyy")</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+        <br /><br /><br />
+    </div>
+</div>

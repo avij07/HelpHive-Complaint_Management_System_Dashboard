@@ -1,0 +1,268 @@
+﻿@model ComplaintMngSys.Models.ApplicationUser
+@inject ComplaintMngSys.Data.ApplicationDbContext context
+@inject ComplaintMngSys.Services.IRoles _roles;
+
+@{
+    UserProfile profile = context.UserProfile.SingleOrDefault(x => x.ApplicationUserId.Equals(Model.Id));
+    var _MainMenuViewModel = await _roles.RolebaseMenuLoad(Model.Id);
+
+
+    <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: rgb(27, 27, 97);">
+        <a href="@Url.Action("Index", "Dashboard")" class="brand-link">
+            <img src="~/images/home.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
+            <span class="brand-text font-weight-light">Home</span>
+        </a>
+
+        <div class="sidebar">
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    <img src="@profile.ProfilePicture" class="img-circle elevation-2" alt="User Image">
+                </div>
+                <div class="info">
+                    <a href="@Url.Action("Index", "UserProfile")" class="d-block">
+                        @profile.FirstName @profile.LastName
+                    </a>
+                </div>
+            </div>
+
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+                    @if (_MainMenuViewModel.MyComplaint)
+                    {
+                        <li class="nav-item">
+                            <a href="@MainMenu.MyComplaint.Path" class="nav-link active">
+                                <i class="nav-icon fas fa-server"></i>
+                                <p>@MainMenu.MyComplaint.PageName</p>
+                            </a>
+                        </li>
+                    }
+                    
+                    @if (_MainMenuViewModel.ManageComplaint)
+                    {
+                        <li class="nav-item">
+                            <a href="@MainMenu.ManageComplaint.Path" class="nav-link">
+                                <i class="nav-icon fas fa-tools"></i>
+                                <p>@MainMenu.ManageComplaint.PageName</p>
+                            </a>
+                        </li>
+                    }
+
+                    @if (_MainMenuViewModel.AssignToMe)
+                    {
+                        <li class="nav-item">
+                            <a href="@MainMenu.AssignToMe.Path" class="nav-link">
+                                <i class="nav-icon fas fa-user-check"></i>
+                                <p>@MainMenu.AssignToMe.PageName</p>
+                            </a>
+                        </li>
+                    }
+
+                    @if (_MainMenuViewModel.ResolvedComplaint)
+                    {
+                        <li class="nav-item">
+                            <a href="@MainMenu.ResolvedComplaint.Path" class="nav-link">
+                                <i class="nav-icon fas fa-check-circle"></i>
+                                <p>@MainMenu.ResolvedComplaint.PageName</p>
+                            </a>
+                        </li>
+                    }
+                   
+                   
+                    
+                    @if (_MainMenuViewModel.Notification)
+                    {
+                        <li class="nav-item">
+                            <a href="@MainMenu.Notification.Path" class="nav-link">
+                                <i class="nav-icon fas fa-bell"></i>
+                                <p>@MainMenu.Notification.PageName</p>
+                            </a>
+                        </li>
+                    }
+                    @if (_MainMenuViewModel.AttachmentFile)
+                    {
+                        <li class="nav-item">
+                            <a href="@MainMenu.AttachmentFile.Path" class="nav-link">
+                                <i class="nav-icon fas fa-file"></i>
+                                <p>@MainMenu.AttachmentFile.PageName</p>
+                            </a>
+                        </li>
+                    }
+
+                    @if (_MainMenuViewModel.Admin)
+                    {
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-toolbox"></i>
+                                <p>
+                                    Settings
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                @if (_MainMenuViewModel.UserManagement)
+                                {
+                                    <li class="nav-item">
+                                        <a href="@MainMenu.UserManagement.Path" class="nav-link">
+                                            <i class="nav-icon fas fa-user-shield"></i>
+                                            <p>@MainMenu.UserManagement.PageName</p>
+                                        </a>
+                                    </li>
+                                }
+
+                               
+
+
+                                @if (_MainMenuViewModel.ManagePageAccess)
+                                {
+                                    <li class="nav-item">
+                                        <a href="@MainMenu.ManagePageAccess.Path" class="nav-link">
+                                            <i class="nav-icon fas fa-toolbox"></i>
+                                            <p>@MainMenu.ManagePageAccess.PageName</p>
+                                        </a>
+                                    </li>
+                                }
+
+                                @if (_MainMenuViewModel.Priority)
+                                {
+                                    <li class="nav-item">
+                                        <a href="@MainMenu.Priority.Path" class="nav-link">
+                                            <i class="nav-icon fas fa-list"></i>
+                                            <p>@MainMenu.Priority.PageName</p>
+                                        </a>
+                                    </li>
+                                }
+
+                                @if (_MainMenuViewModel.ComplaintCategory)
+                                {
+                                    <li class="nav-item">
+                                        <a href="@MainMenu.ComplaintCategory.Path" class="nav-link">
+                                            <i class="nav-icon fas fa-list"></i>
+                                            <p>@MainMenu.ComplaintCategory.PageName</p>
+                                        </a>
+                                    </li>
+                                }
+
+                                @if (_MainMenuViewModel.ComplaintStatus)
+                                {
+                                    <li class="nav-item">
+                                        <a href="@MainMenu.ComplaintStatus.Path" class="nav-link">
+                                            <i class="nav-icon fas fa-check-double"></i>
+                                            <p>@MainMenu.ComplaintStatus.PageName</p>
+                                        </a>
+                                    </li>
+                                }
+
+                                @if (_MainMenuViewModel.IdentitySetting)
+                                {
+                                    <li class="nav-item">
+                                        <a href="@MainMenu.IdentitySetting.Path" class="nav-link">
+                                            <i class="nav-icon fas fa-user-secret"></i>
+                                            <p>@MainMenu.IdentitySetting.PageName</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (_MainMenuViewModel.LoginHistory)
+                                {
+                                    <li class="nav-item">
+                                        <a href="@MainMenu.LoginHistory.Path" class="nav-link">
+                                            <i class="nav-icon fas fa-history"></i>
+                                            <p>@MainMenu.LoginHistory.PageName</p>
+                                        </a>
+                                    </li>
+                                }
+
+                                @if (_MainMenuViewModel.EmailSetting)
+                                {
+                                    <li class="nav-item">
+                                        <a href="@MainMenu.EmailSetting.Path" class="nav-link">
+                                            <i class="nav-icon fas fa-envelope"></i>
+                                            <p>@MainMenu.EmailSetting.PageName</p>
+                                        </a>
+                                    </li>
+                                }
+
+
+                                @if (_MainMenuViewModel.Comment)
+                                {
+                                    <li class="nav-item">
+                                        <a href="@MainMenu.Comment.Path" class="nav-link">
+                                            <i class="nav-icon fas fa-comment-alt"></i>
+                                            <p>@MainMenu.Comment.PageName</p>
+                                        </a>
+                                    </li>
+                                }
+
+                                @if (_MainMenuViewModel.Admin)
+                                {
+                                    <li class="nav-item">
+                                        <a href="@MainMenu.AuditLogs.Path" class="nav-link">
+                                            <i class="nav-icon fas fa-database"></i>
+                                            <p>@MainMenu.AuditLogs.PageName</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (_MainMenuViewModel.CompanyInfo)
+                                {
+                                    <li class="nav-item">
+                                        <a href="@MainMenu.CompanyInfo.Path" class="nav-link">
+                                            <i class="nav-icon fas fa-compass"></i>
+                                            <p>@MainMenu.CompanyInfo.PageName</p>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+                    }
+
+                    <li class="nav-item has-treeview">
+                        @if (_MainMenuViewModel.ComplaintStatusSummary)
+                        {
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-database"></i>
+                                <p>
+                                    Report
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                        }
+                        <ul class="nav nav-treeview">
+                            @if (_MainMenuViewModel.ComplaintStatusSummary)
+                            {
+                                <li class="nav-item">
+                                    <a href="@MainMenu.ComplaintStatusSummaryReport.Path" class="nav-link">
+                                        <i class="nav-icon fas fa-address-book"></i>
+                                        <p>@MainMenu.ComplaintStatusSummaryReport.PageName</p>
+                                    </a>
+                                </li>
+                            }
+                            @if (_MainMenuViewModel.AssignedToSummary)
+                            {
+                                <li class="nav-item">
+                                    <a href="@MainMenu.AssignedToSummaryReport.Path" class="nav-link">
+                                        <i class="nav-icon fas fa-book"></i>
+                                        <p>@MainMenu.AssignedToSummaryReport.PageName</p>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </aside>
+}
+
+<script>
+    var url = window.location;
+    // for sidebar menu entirely but not cover treeview
+    $('ul.nav-sidebar a').filter(function () {
+        return this.href == url;
+    }).addClass('active');
+
+    // for treeview
+    $('ul.nav-treeview a').filter(function () {
+        return this.href == url;
+    }).parentsUntil(".nav-sidebar > .nav-treeview").addClass('menu-open').prev('a').addClass('active');
+</script>

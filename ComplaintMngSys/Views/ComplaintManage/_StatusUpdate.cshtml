@@ -1,0 +1,79 @@
+@model ComplaintMngSys.Models.ComplaintViewModel.StatusManageViewModel
+
+@{ ViewData["Title"] = "Create"; }
+
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="StatusUpdate">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="StatusUpdateViewModel.Id" />
+
+                <div class="form-group">
+                    <label asp-for="StatusUpdateViewModel.Status" class="control-label"></label>
+                    <select asp-for="StatusUpdateViewModel.Status" asp-items="@ViewBag.ddlComplaintStatus" id="Status" class="form-control">
+                        <option disabled selected>--- SELECT ---</option>
+                    </select>
+                    <span asp-validation-for="StatusUpdateViewModel.Status" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="StatusUpdateViewModel.AssignTo" class="control-label"></label>
+                    
+                        <select asp-for="StatusUpdateViewModel.AssignTo" asp-items="@ViewBag.ddlAssignTo" id="AssignTo" class="form-control">
+                            <option disabled selected>--- SELECT ---</option>
+                        </select>
+                        <span asp-validation-for="StatusUpdateViewModel.AssignTo" class="text-danger"></span>
+                    
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="StatusUpdateViewModel.NewComment" class="control-label"></label>
+                    <textarea asp-for="StatusUpdateViewModel.NewComment" class="form-control"></textarea>
+                    <span asp-validation-for="StatusUpdateViewModel.NewComment" class="text-danger"></span>
+                </div>
+
+                
+                    
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-info">
+                </div>
+            </form>
+            <hr />
+            <h4>Comment History</h4>
+            <div class="row" style="width:100%; margin:0 auto;">
+                <table class="ItemTranTable" border="1">
+                    <thead>
+                        <tr>
+                            <th>Comment</th>
+                            <th>Comment By</th>
+                            <th>Comment Date</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.CommentList.OrderByDescending(x => x.CreatedDate))
+                        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Message)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                </td>
+                <td>
+                    @String.Format("{0:f}", item.CreatedDate)
+                </td>
+                <td>
+                    <a href="#" class="btn btn-danger btn-xs" onclick="DeleteComment('@item.Id', true)">Delete</a>
+                </td>
+            </tr>}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>

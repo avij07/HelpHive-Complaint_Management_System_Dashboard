@@ -1,0 +1,40 @@
+﻿@model ComplaintMngSys.Models.ReportViewModel.ManageReportViewModel
+
+@{
+    ViewData["Title"] = "Assigned To Summary Report";
+}
+
+<div class="row">
+    <div class="col-xs-5">
+        <img src="@Model.CompanyInfoCRUDViewModel.CompanyLogoImagePath" class="" alt="" style="margin-bottom:20px; width:20%;">
+    </div>
+    <div class="col-xs-7">
+        <h3><b>Report</b></h3>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-8" style="display: inline-block;">
+            <span>Billing From,</span>
+            <address style="margin-top:10px">
+                <strong>@Model.CompanyInfoCRUDViewModel.Name</strong>
+                <br>@Model.CompanyInfoCRUDViewModel.Address<br>
+                <abbr><b>Mobile: </b></abbr>@Model.CompanyInfoCRUDViewModel.Phone<br>
+                <abbr><b>Email: </b></abbr>@Model.CompanyInfoCRUDViewModel.Email<br>
+                <abbr><b>Website: </b></abbr>@Model.CompanyInfoCRUDViewModel.Website
+            </address>
+        </div>
+        <div class="col-xs-4" style="display: inline-block;">
+            <div class="m-b-15"><strong>Print Date </strong>: @DateTime.Today.ToString("dd MMMM yyyy")</div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .panel-heading {
+        padding: 0px 0px;
+        border-bottom: 0px solid transparent;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+</style>

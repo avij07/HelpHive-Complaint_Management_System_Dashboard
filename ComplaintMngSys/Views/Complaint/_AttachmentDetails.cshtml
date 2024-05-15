@@ -1,0 +1,50 @@
+@model ComplaintMngSys.Models.ComplaintViewModel.ComplaintManageViewModel
+
+<div class="row" style="width:100%; margin:0 auto;">
+    <table class="ItemTranTable" border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>File Name</th>
+                <th>Content Type</th>
+                <th>Length</th>
+                <th>Date</th>
+                <th>Added By</th>
+                <th>Download</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.AttachmentFileList)
+            {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FileName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ContentType)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Length)
+    </td>
+    <td>
+        @String.Format("{0:f}", item.CreatedDate)
+    </td>
+    <td>
+        @String.Format("{0:f}", item.CreatedBy)
+    </td>
+    <td>
+        @Html.ActionLink("Download", "DownloadFile", new { id = item.Id }, new { @class = "btn btn-success btn-xs" })
+    </td>
+    <td>
+        @if (Model.ComplaintGridViewModel.CurrentUserId == item.CreatedBy.Trim())
+        {
+<a href="#" class="btn btn-danger btn-xs" onclick="DeleteAttachmentFile('@item.Id', false)">Delete</a>}
+    </td>
+</tr>}
+        </tbody>
+    </table>
+</div>

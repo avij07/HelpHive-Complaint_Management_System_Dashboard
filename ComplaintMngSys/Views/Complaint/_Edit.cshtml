@@ -1,0 +1,73 @@
+@model ComplaintMngSys.Models.ComplaintViewModel.ComplaintManageViewModel
+
+@{ ViewData["Title"] = "Create"; }
+
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-12 col-sm-12">
+                <div class="card card-primary card-outline card-tabs" id="tabs">
+                    <div class="card-header p-0 pt-1 border-bottom-0">
+                        <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="ComplaintTab" data-toggle="pill" href="#divComplaintTab" role="tab" aria-controls="ComplaintTab" aria-selected="true">Complaint</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="AttachmentFileTab" data-toggle="pill" href="#divAttachmentFileTab" role="tab" aria-controls="AttachmentFileTab" aria-selected="false">Attachment File</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="CommentHistoryTab" data-toggle="pill" href="#divCommentHistoryTab" role="tab" aria-controls="CommentHistoryTab" aria-selected="false">Comment History</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="tab-content" id="tabContent">
+                            <div class="tab-pane fade show active" id="divComplaintTab" role="tabpanel" aria-labelledby="divComplaintTab">
+                                <form asp-action="AddEdit" id="frmUpdateComplaint">
+                                    <partial name="~/Views/UIComponents/_bootstrapAlert.cshtml" />
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <partial name="_EditSub" model="Model.ComplaintCRUDViewModel" />
+                                </form>
+                            </div>
+
+                            <div class="tab-pane fade" id="divAttachmentFileTab" role="tabpanel" aria-labelledby="divAttachmentFileTab">
+                                <h4>Attachment File</h4>
+                                <div>
+                                    <partial name="_AttachmentDetails" />
+                                    <hr />
+                                    <form id="frmAttachmentFile" method="post" enctype="multipart/form-data">
+                                        <input type="hidden" asp-for="AttachmentFileCRUDViewModel.ComplaintId" value="@Model.ComplaintCRUDViewModel.Id" id="ComplaintId" />
+                                        <div class="form-group">
+                                            <span class="control-fileupload">
+                                                <label for="file">Choose a file :</label>
+                                                <input type="file" asp-for="AttachmentFileCRUDViewModel.AttachmentFile" id="AttachmentFile" name="AttachmentFile" />
+                                            </span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input value="Add Attachment File" class="btn btn-info" onclick="AddNewAttachmentFile()">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="divCommentHistoryTab" role="tabpanel" aria-labelledby="divCommentHistoryTab">
+                                <h4>Comment History</h4>
+                                @{ if (Model.ComplaintCRUDViewModel.IsAdmin)
+                                    {
+                        <partial name="_CommentHistoryAdmin" /> }
+                    else
+                    {
+        <partial name="_CommentHistory" />} }
+                                <partial name="_AddNewCommentInEdit" />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>

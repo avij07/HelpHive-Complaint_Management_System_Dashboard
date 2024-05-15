@@ -1,0 +1,186 @@
+﻿@model ComplaintMngSys.Models.CommonViewModel.DefaultIdentityOptionsCRUDViewModel
+@{
+    ViewData["Title"] = "Default Identity Options";
+}
+
+<div class="wrapper">
+    <div class="panel panel-hash">
+        <div class="panel-heading">
+            <div style="display: inline-block;">
+                <h4 class="pull-right"><b>Default Identity Options</b></h4>
+            </div>
+        </div>
+        <div class="panel-body scroll panel-height">
+            <form asp-action="Edit" enctype="multipart/form-data">
+                <input type="hidden" asp-for="@Model.Id" />
+                <input type="hidden" asp-for="@Model.CreatedDate" />
+                <input type="hidden" asp-for="@Model.ModifiedDate" />
+                <input type="hidden" asp-for="@Model.CreatedBy" />
+                <input type="hidden" asp-for="@Model.ModifiedBy" />
+                <input type="hidden" asp-for="@Model.Cancelled" />
+
+                <table class="ItemTranTable">
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.PasswordRequireDigit)</th>
+                        <td>
+                            <input asp-for="PasswordRequireDigit" class="form-control" autofocus />
+                            <span asp-validation-for="PasswordRequireDigit" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.PasswordRequiredLength)</th>
+                        <td>
+                            <input asp-for="PasswordRequiredLength" class="form-control" autofocus />
+                            <span asp-validation-for="PasswordRequiredLength" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.PasswordRequireNonAlphanumeric)</th>
+                        <td>
+                            <input asp-for="PasswordRequireNonAlphanumeric" class="form-control" autofocus />
+                            <span asp-validation-for="PasswordRequireNonAlphanumeric" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.PasswordRequireUppercase)</th>
+                        <td>
+                            <input asp-for="PasswordRequireUppercase" class="form-control" autofocus />
+                            <span asp-validation-for="PasswordRequireUppercase" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.PasswordRequireLowercase)</th>
+                        <td>
+                            <input asp-for="PasswordRequireLowercase" class="form-control" autofocus />
+                            <span asp-validation-for="PasswordRequireLowercase" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.PasswordRequiredUniqueChars)</th>
+                        <td>
+                            <input asp-for="PasswordRequiredUniqueChars" class="form-control" autofocus />
+                            <span asp-validation-for="PasswordRequiredUniqueChars" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.LockoutDefaultLockoutTimeSpanInMinutes)</th>
+                        <td>
+                            <input asp-for="LockoutDefaultLockoutTimeSpanInMinutes" class="form-control" autofocus />
+                            <span asp-validation-for="LockoutDefaultLockoutTimeSpanInMinutes" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.LockoutMaxFailedAccessAttempts)</th>
+                        <td>
+                            <input asp-for="LockoutMaxFailedAccessAttempts" class="form-control" autofocus />
+                            <span asp-validation-for="LockoutMaxFailedAccessAttempts" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.LockoutAllowedForNewUsers)</th>
+                        <td>
+                            <input asp-for="LockoutAllowedForNewUsers" class="form-control" autofocus />
+                            <span asp-validation-for="LockoutAllowedForNewUsers" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.UserRequireUniqueEmail)</th>
+                        <td>
+                            <input asp-for="UserRequireUniqueEmail" class="form-control" autofocus />
+                            <span asp-validation-for="UserRequireUniqueEmail" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.SignInRequireConfirmedEmail)</th>
+                        <td>
+                            <input asp-for="SignInRequireConfirmedEmail" class="form-control" autofocus />
+                            <span asp-validation-for="SignInRequireConfirmedEmail" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.CookieHttpOnly)</th>
+                        <td>
+                            <input asp-for="CookieHttpOnly" class="form-control" autofocus readonly />
+                            <span asp-validation-for="CookieHttpOnly" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.CookieExpiration)</th>
+                        <td>
+                            <input asp-for="CookieExpiration" class="form-control" autofocus readonly />
+                            <span asp-validation-for="CookieExpiration" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.CookieExpireTimeSpan)</th>
+                        <td>
+                            <input asp-for="CookieExpireTimeSpan" class="form-control" autofocus readonly />
+                            <span asp-validation-for="CookieExpireTimeSpan" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.LoginPath)</th>
+                        <td>
+                            <input asp-for="LoginPath" class="form-control" autofocus readonly />
+                            <span asp-validation-for="LoginPath" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.LogoutPath)</th>
+                        <td>
+                            <input asp-for="LogoutPath" class="form-control" autofocus readonly />
+                            <span asp-validation-for="LogoutPath" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.AccessDeniedPath)</th>
+                        <td>
+                            <input asp-for="AccessDeniedPath" class="form-control" autofocus readonly />
+                            <span asp-validation-for="AccessDeniedPath" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.SlidingExpiration)</th>
+                        <td>
+                            <input asp-for="SlidingExpiration" class="form-control" autofocus readonly />
+                            <span asp-validation-for="SlidingExpiration" class="text-danger"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th></th>
+                        <td>
+                            <input type="submit" value="Update" class="btn btn-danger" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <br />
+            <a asp-action="Index">Back: Default Identity Options</a>
+        </div>
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+
+<style>
+    .panel-heading {
+        padding: 0px 0px 0px 25px;
+    }
+
+    .panel-body {
+        padding: 0px 25px 0px 25px;
+    }
+
+    .h4 {
+        margin-top: 1px;
+        margin-bottom: 1px;
+    }
+
+    .ItemTranTable td, #ItemTranTable th {
+        padding: 5px;
+    }
+</style>
+

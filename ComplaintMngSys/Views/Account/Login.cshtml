@@ -1,0 +1,92 @@
+@model ComplaintMngSys.Models.AccountViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-lg-5" id="form-section">
+            <div id="auth-logo" style="background-color: rgb(50, 50, 50);">
+                <h2 style="color: white; text-align: center;"><b>HELP-HIVE</b></h2>
+                <h4 style="color: white; text-align: center;"><b>Complaint Management System</b></h4>
+
+            </div>
+
+            <div id="auth-form">
+                <form id="frmLogin">
+                    <input type="hidden" asp-for="Latitude" id="Longitude" />
+                    <input type="hidden" asp-for="Latitude" id="Latitude" />
+                    <div class="form-group ">
+                        <div class="col-xs-12">
+                            <input class="form-control" asp-for="Email" id="Email" type="email" name="email" autofocus
+                                   placeholder="Email">
+                        </div>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <input class="form-control" asp-for="Password" id="Password" type="password" name="password"
+                                   required placeholder="Password">
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <div class="">
+                                <input id="checkbox-signup" type="checkbox" name="remember">
+                                <label for="checkbox-signup" class="text-dark"> Remember Me </label>
+                            </div>
+                            <a asp-action="ForgotPassword" class="text-dark pull-right">
+                                <i class="fa fa-lock m-r-5"></i>
+                                Forgot Password?
+                            </a>
+                        </div>
+                    </div>
+                    <div class="form-group text-center m-t-10">
+                        <div class="col-xs-12">
+                            <button type="button" id="btnUserLogin"
+                                    class="btn btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light"
+                                    style="background-color: rgb(50, 50, 50); color: white;"
+                                    onclick="LoginAction()">
+                                Log In
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="form-group m-b-0">
+                        <div class="col-sm-12 text-center">
+                            <p>
+                                Don't have an account? <a asp-action="Register" class="text-primary m-l-5">
+                                    <b style="color: rgb(50, 50, 50);">
+                                        Sign Up
+                                    </b>
+
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </form>
+
+               
+            </div>
+        </div>
+
+        <div class="col-lg-7 visible-lg" id="background-section" style="background-image: url('/images/F5.jpg') ; background-size: cover;">
+            
+        </div>
+    </div>
+</div>
+
+<script src="~/js/LoginOperation.js"></script>
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script>
+        $(document).ready(function () {
+            //$("#btnUserLogin").trigger('click');
+            SetLoginInfo('divLoginInfo');
+            SaveMetaData();
+        });
+    </script>
+}

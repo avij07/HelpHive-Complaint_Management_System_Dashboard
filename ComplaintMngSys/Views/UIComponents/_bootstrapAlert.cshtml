@@ -1,0 +1,26 @@
+﻿@if (TempData["successAlert"] != null)
+{
+    <div class="alert btn-primary">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <p>@TempData["successAlert"]</p>
+    </div>
+}
+
+
+@if (TempData["errorAlert"] != null)
+{
+    <div class="alert btn-primary">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <p>@TempData["errorAlert"]</p>
+    </div>
+}
+
+
+
+<script>
+    $(document).ready(function () {
+        setTimeout(function () {
+            $(".alert").alert('close');
+        }, 5000);
+    });
+</script>

@@ -1,0 +1,51 @@
+﻿@model ComplaintMngSys.Models.CommonViewModel.SendGridSettingViewModel
+@{
+    ViewData["Title"] = "SMTP Email Setting";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="ItemTranTable" border="1" style=" width:100%;margin:1px auto;">
+            <tr>
+                <th>ID</th>
+                <td>@Model.Id</td>
+            </tr>
+            <tr>
+                <th>SendGrid User</th>
+                <td>@Model.SendGridUser</td>
+            </tr>
+            <tr>
+                <th>SendGrid Key</th>
+                <td>@Model.SendGridKey</td>
+            </tr>
+            <tr>
+                <th>From Email</th>
+                <td>@Model.FromEmail</td>
+            </tr>
+            <tr>
+                <th>From Full Name</th>
+                <td>@Model.FromFullName</td>
+            </tr>
+            <tr>
+                <th>Is Default</th>
+                <td>@Model.IsDefault</td>
+            </tr>
+            <tr>
+                <th>Created Date</th>
+                <td>@Model.CreatedDate</td>
+            </tr>
+            <tr>
+                <th>Modified Date</th>
+                <td>@Model.ModifiedDate</td>
+            </tr>
+            <tr>
+                <th>Created By</th>
+                <td>@Model.CreatedBy</td>
+            </tr>
+            <tr>
+                <th>Modified By</th>
+                <td>@Model.ModifiedBy</td>
+            </tr>
+        </table>
+    </div>
+</div>

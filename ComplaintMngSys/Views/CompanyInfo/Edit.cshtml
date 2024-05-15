@@ -1,0 +1,106 @@
+﻿@model ComplaintMngSys.Models.CompanyInfoViewModel.CompanyInfoCRUDViewModel
+@{
+    ViewData["Title"] = "Company Info";
+}
+
+<div class="wrapper">
+    <div class="panel panel-hash">
+        <div class="panel-heading">
+            <div style="display: inline-block;">
+                <h3 class="pull-right"><b>Company Info</b></h3>
+            </div>
+        </div>
+        <div class="panel-body scroll panel-height">
+            <form asp-action="Edit" enctype="multipart/form-data">
+                <input type="hidden" asp-for="@Model.Id" />
+                <input type="hidden" asp-for="@Model.CompanyLogoImagePath" />
+                <input type="hidden" asp-for="@Model.CreatedDate" />
+                <input type="hidden" asp-for="@Model.CreatedBy" />
+                <table class="ItemTranTable">
+                    <tr>
+                        <th>Name</th>
+                        <td>
+                            <input asp-for="Name" class="form-control" autofocus />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Logo</th>
+                        <td>
+                            <input type="file" asp-for="CompanyLogo" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Currency</th>
+                        <td>
+                            <input asp-for="Currency" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Address</th>
+                        <td>
+                            <input asp-for="Address" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Country</th>
+                        <td>
+                            <input asp-for="Country" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Phone</th>
+                        <td>
+                            <input asp-for="Phone" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>
+                            <input asp-for="Email" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Fax</th>
+                        <td>
+                            <input asp-for="Fax" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Website</th>
+                        <td>
+                            <input asp-for="Website" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>
+                            <input type="submit" value="Update Info" class="btn btn-danger btn-sm" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <a asp-action="Index">Back to Company Info</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .panel-heading {
+        padding: 0px 0px 0px 25px;
+    }
+
+    .panel-body {
+        padding: 0px 25px 0px 25px;
+    }
+
+    .h4 {
+        margin-top: 1px;
+        margin-bottom: 1px;
+    }
+
+    .ItemTranTable td, #ItemTranTable th {
+        padding: 5px;
+    }
+</style>
+

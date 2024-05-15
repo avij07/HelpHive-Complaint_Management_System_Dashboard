@@ -1,0 +1,87 @@
+﻿@model List<ComplaintMngSys.Models.UserAccountViewModel.ManageUserRolesViewModel>
+@{
+    ViewData["Title"] = "Manage Role";
+}
+
+
+<input type="text" id="myInput" onkeyup="SearchInHTMLTable()" placeholder="Search for Page Name.." title="Type in a name">
+<div class="panel panel-info">
+    <form asp-action="ManageRole">
+        <div class="card">
+            <div class="card-header">
+                <div class="col-sm-2">
+                </div>
+                <div class="col-sm-10 pull-left">
+                    <input type="checkbox" id="checkAll" /> <b>Check All</b>
+                </div>
+            </div>
+            <br />
+            <div class="card-body">
+                <table class="ItemTranTable" id="myTable" border="1">
+                    <thead>
+                        <tr>
+                            <th>SL</th>
+                            <th>Page Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int index = 1;
+                            @for (int i = 0; i < Model.Count; i++)
+                            {
+                                <tr>
+                                    <td>
+                                        @index
+                                    </td>
+                                    <td>
+                                        <div class="form-check m-1">
+                                            <input type="hidden" asp-for="@Model[i].RoleId" />
+                                            <input type="hidden" asp-for="@Model[i].RoleName" />
+                                            <input asp-for="@Model[i].Selected" class="form-check-input" />
+                                            <label class="form-check-label" asp-for="@Model[i].Selected">
+                                                @Model[i].RoleName
+                                            </label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                index++;
+                            }
+                        }
+                    </tbody>
+                    <tfoot>
+                    </tfoot>
+                </table>
+
+                <div asp-validation-summary="All" class="text-danger"></div>
+                @{TempData["ApplicationUserId"] = ViewBag.ApplicationUserId;}
+            </div>
+            <div class="card-footer">
+                <input type="submit" value="Update" class="btn btn-primary" style="width:auto" />
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    #myInput {
+        /*background-image: url('/css/searchicon.png');*/
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 20px 12px 40px;
+        border: 1px solid #ddd;
+        margin-bottom: 12px;
+    }
+</style>
+
+<script>
+    $("#checkAll").click(function () {
+        $('input:checkbox').not(this).prop('checked', this.checked);
+    });
+</script>

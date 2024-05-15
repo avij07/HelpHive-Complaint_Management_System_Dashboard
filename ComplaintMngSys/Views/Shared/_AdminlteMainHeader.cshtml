@@ -1,0 +1,30 @@
+﻿@model ComplaintMngSys.Models.AccountViewModels.LoginViewModel;
+
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+    </ul>
+    <p id="panelHeaderElements"></p>
+
+    <ul class="navbar-nav ml-auto">
+        <li>
+            <form id="frmSignOut">
+                <div class="form-group pull-right" style="margin:10px;">
+                    <button type="button" onclick="SignOutAction()" id="btnSignOut" class="btn btn-danger btn-xs">Sign
+                        Out</button>
+                </div>
+            </form>
+        </li>
+    </ul>
+</nav>
+
+<script src="~/AdminLTE/plugins/jquery/jquery.min.js"></script>
+<script src="~/js/LoginOperation.js"></script>
+
+<script>
+    $(document).ready(function () {
+        SetGeolocation();
+    });
+</script>

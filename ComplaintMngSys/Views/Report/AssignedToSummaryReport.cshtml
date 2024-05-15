@@ -1,0 +1,130 @@
+﻿@model ComplaintMngSys.Models.ReportViewModel.ManageReportViewModel
+
+@{
+    ViewData["Title"] = "Assigned To Summary Report";
+}
+
+<div class="wrapper">
+
+    <div class="col-sm-12" id="printableArea">
+        <div class="panel panel-hash">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <h5><b>Assigned To Summary Report</b></h5>
+                    </div>
+                    <div class="col-sm-3 text-right hidden-print">
+                        <button class="btn btn-info" onclick="printDiv('printableArea')"><span class="fa fa-print"></span></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row hidden-print">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Start Date</label>
+                        <input type="date" id="StartDate" class="form-control" placeholder="Select Start Date" required>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>End Date</label>
+                        <input type="date" id="EndDate" class="form-control" placeholder="Select Start Date" required>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label><span></span></label>
+                        <input type="submit" value="Submit"
+                               onclick="AssignedToSummaryReportCustomRange(document.getElementById('StartDate').value,document.getElementById('EndDate').value)"
+                               class="form-control btn btn-danger">
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label><span></span></label>
+                        <input type="button" class="form-control btn btn-success" value="Reset" onclick="ResetAssignedToSummaryReport()" />
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label>Showing Data on Date Range: @ViewBag.StartDate to @ViewBag.EndDate</label>
+                </div>
+            </div>
+
+            <hr />
+            <div class="panel-body scroll panel-height">
+                <table class="ItemTranTable">
+                    <thead>
+                        <tr>
+                            <th>SL</th>
+                            <th>Assigned User</th>
+                            <th>Total Assigned</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @{
+                            int SL = 1;
+                            double sumTotalComplaint = 0;
+                            @foreach (var item in Model.AssignToSummaryViewModel)
+                            {
+                                sumTotalComplaint = sumTotalComplaint + item.TotalAssigned;
+                                <tr>
+                                    <td>
+                                        @SL
+                                    </td>
+                                    <td>
+                                        @if (item.ApplicationUserId != null)
+                                        {
+                                            <a href='#' onclick=ViewUserDetailsBy("@item.ApplicationUserId");>@item.UserName</a>
+                                        }
+                                        else
+                                        {
+                                            @Html.DisplayFor(modelItem => item.UserName)
+                                        }
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TotalAssigned)
+                                    </td>
+                                </tr>
+                                SL++;
+                            }
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><b>Σ:</b> @sumTotalComplaint</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <hr />
+                @{
+                    var _TotalAssigned = @Model.AssignToSummaryViewModel.Where(x => x.UserName != "Unassigned User").Sum(x => x.TotalAssigned);
+                    var _TotalUnassigned = sumTotalComplaint - _TotalAssigned;
+                }
+                <span><b>Total Ticket: </b>@sumTotalComplaint</span><br />
+                <span><b>Total Assigned Ticket: </b>@_TotalAssigned</span><br />
+                <span><b>Total Unassigned Ticket: </b>@_TotalUnassigned</span> <br />
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .panel-heading {
+        padding: 0px 0px;
+        border-bottom: 0px solid transparent;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+</style>
+
+<script src="~/js/Report.js"></script>
+<script src="~/js/UserManagement/UserManagement_CRUD.js"></script>

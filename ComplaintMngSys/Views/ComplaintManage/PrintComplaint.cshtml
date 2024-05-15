@@ -1,0 +1,19 @@
+@model ComplaintMngSys.Models.ComplaintViewModel.ComplaintManageViewModel
+
+<div class="row" style="margin-left: 20px; margin-right: 20px;">
+    <div class="col-sm-12">
+        <div class="panel-footer text-right">
+            <button class="btn btn-info" onclick="printDiv('printableArea')"><span class="fa fa-print"></span></button>
+            <button class="btn btn-success" id="btnDownloadComplaint" onclick="DownloadasjsPDFComplaint()"><span
+                    class="fa fa-download"></span></button>
+            <button class="btn btn-info" onclick="BacktoPreviousPage()">Back</button>
+        </div>
+    </div>
+
+    <div class="col-sm-12">
+        <partial name="~/Views/DownloadReport/_ComplaintprintableArea.cshtml" />
+        <br /><br />
+    </div>
+</div>
+
+<script src="~/js/ComplaintManage/ReportDownload.js"></script>

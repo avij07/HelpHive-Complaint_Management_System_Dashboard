@@ -1,0 +1,85 @@
+﻿@model ComplaintMngSys.Models.UserAccountViewModel.UserProfileCRUDViewModel
+
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <form id="ApplicationUserForm">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="UserProfileId" id="UserProfileId" />
+                <input type="hidden" asp-for="ApplicationUserId" id="ApplicationUserId" />
+                <input type="hidden" id="CurrentURL" asp-for="CurrentURL" />
+
+                <div class="row">
+                    <div class="col-6 col-sm-6">
+                        <div class="form-group row">
+                            <label asp-for="FirstName" class="col-sm-3 col-form-label"></label>
+                            <div class="col-sm-9">
+                                <input asp-for="FirstName" class="form-control" id="FirstName" type="text" />
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="LastName" class="col-sm-3 col-form-label"></label>
+                            <div class="col-sm-9">
+                                <input asp-for="LastName" class="form-control" id="LastName" type="text" />
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="PhoneNumber" class="col-sm-3 col-form-label"></label>
+                            <div class="col-sm-9">
+                                <input asp-for="PhoneNumber" class="form-control" id="PhoneNumber" type="text" />
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="Email" class="col-sm-3 col-form-label"></label>
+                            <div class="col-sm-9">
+                                <input asp-for="Email" class="form-control" id="Email" type="email" disabled />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>                        
+                    </div>
+
+                    <div class="col-6 col-sm-6">
+                        <div class="form-group row">
+                            <label asp-for="Address" class="col-sm-3 col-form-label"></label>
+                            <div class="col-sm-9">
+                                <input asp-for="Address" class="form-control" id="Address" type="text" />
+                                <span asp-validation-for="Address" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="Country" class="col-sm-3 col-form-label"></label>
+                            <div class="col-sm-9">
+                                <input asp-for="Country" class="form-control" id="Country" type="text" />
+                                <span asp-validation-for="Country" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="file">Choose a file :</label>
+                            <div class="col-sm-9">
+                                <span class="control-fileupload">
+                                    <input type="file" asp-for="ProfilePicture" />
+                                </span>
+                                <p>&nbsp;</p>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label"></label>
+                            <div class="col-sm-9">
+                                <input type="button" id="btnSave" value="Save" onclick="SaveUser()" class="btn btn-info">
+                                <button type="button" id="btnAddEditUserAccountClose" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script>
+    $('#CurrentURL').val(window.location.pathname);
+</script>

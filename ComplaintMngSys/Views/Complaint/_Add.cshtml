@@ -1,0 +1,136 @@
+@model ComplaintMngSys.Models.ComplaintViewModel.ComplaintCRUDViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div>
+    <form id="frmComplaint">
+        <partial name="~/Views/UIComponents/_bootstrapAlert.cshtml" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="Code" />
+        <input type="hidden" asp-for="Complainant" />
+        <input type="hidden" asp-for="CreatedDate" />
+        <input type="hidden" asp-for="CreatedBy" />
+        <input type="hidden" asp-for="CurrentURL" id="CurrentURL" />
+
+        <div class="col-12 col-sm-12">
+            <div class="card card-primary card-outline card-tabs">
+                <div class="card-header p-0 pt-1 border-bottom-0">
+                    <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="ComplaintTab" data-toggle="pill" href="#divComplaintTab"
+                                role="tab" aria-controls="ComplaintTab" aria-selected="true">Complaint</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="AttachmentFileTab" data-toggle="pill" href="#divAttachmentFileTab"
+                                role="tab" aria-controls="AttachmentFileTab" aria-selected="false">Attachment File</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card-body">
+                    <div class="tab-content" id="tabContent">
+                        <div class="tab-pane fade show active" id="divComplaintTab" role="tabpanel"
+                            aria-labelledby="divComplaintTab">
+                            <div class="row">
+                                <div class="col-6 col-sm-6">
+                                    <div class="form-group row">
+                                        <label asp-for="Name" class="col-sm-3 col-form-label"></label>
+                                        <div class="col-sm-9">
+                                            <input asp-for="Name" class="form-control" type="text" />
+                                            <span asp-validation-for="Name" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="Description" class="col-sm-3 col-form-label"></label>
+                                        <div class="col-sm-9">
+                                            <textarea asp-for="Description" class="form-control"
+                                                id="Description"></textarea>
+                                            <span asp-validation-for="Description" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="DueDate" class="col-sm-3 col-form-label"></label>
+                                        <div class="col-sm-9">
+                                            <input asp-for="DueDate" id="UnitPrice" class="form-control" type="date" />
+                                            <span asp-validation-for="DueDate" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="Category" class="col-sm-3 col-form-label"></label>
+                                        <div class="col-sm-9">
+                                            <select asp-for="Category" asp-items="@ViewBag.ddlComplaintCategory"
+                                                id="Category" class="form-control">
+                                                <option disabled selected>--- SELECT ---</option>
+                                            </select>
+                                            <span asp-validation-for="Category" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-6 col-sm-6">
+                                    <div class="form-group row">
+                                        <label asp-for="AssignTo" class="col-sm-3 col-form-label"></label>
+                                        <div class="col-sm-9">
+                                            <select asp-for="AssignTo" asp-items="@ViewBag.ddlAssignTo" id="AssignTo"
+                                                class="form-control">
+                                                <option disabled selected>--- SELECT ---</option>
+                                            </select>
+                                            <span asp-validation-for="AssignTo" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label asp-for="Priority" class="col-sm-3 col-form-label"></label>
+                                        <div class="col-sm-9">
+                                            <select asp-for="Priority" asp-items="@ViewBag.ddlPriority" id="Priority"
+                                                class="form-control">
+                                                <option disabled selected>--- SELECT ---</option>
+                                            </select>
+                                            <span asp-validation-for="Priority" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="Remarks" class="col-sm-3 col-form-label"></label>
+                                        <div class="col-sm-9">
+                                            <textarea asp-for="Remarks" class="form-control" id="Remarks"></textarea>
+                                            <span asp-validation-for="Remarks" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label"></label>
+                                        <div class="col-sm-6">
+                                            <button type="button" id="btnSave" onclick="AddComplaint()"
+                                                class="btn btn-info">Save</button>
+                                            <button type="button" id="btnClose" class="btn btn-danger"
+                                                data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="tab-pane fade" id="divAttachmentFileTab" role="tabpanel"
+                            aria-labelledby="divAttachmentFileTab">
+                            <div class="form-group">
+                                <span class="control-fileupload">
+                                    <label for="file">Choose a file :</label>
+                                    <input type="file" asp-for="AttachmentFile" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+<script>
+    $('#CurrentURL').val(window.location.pathname);
+</script>

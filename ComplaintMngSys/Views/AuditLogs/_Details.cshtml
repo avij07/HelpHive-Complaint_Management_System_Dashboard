@@ -1,0 +1,42 @@
+@model ComplaintMngSys.Models.AuditLogs
+
+<div style="overflow-x:auto;">
+    <table class="BlueGreen">
+        <tr>
+            <th style="width: 150px;">Id</th>
+            <td>@Model.Id</td>
+        </tr>
+        <tr>
+            <th>User Id</th>
+            <td>@Model.UserId</td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td>@Model.Type</td>
+        </tr>
+        <tr>
+            <th style="background-color: gray;">Table Name</th>
+            <td>@Model.TableName</td>
+        </tr>
+        <tr>
+            <th>Date Time</th>
+            <td>@Model.DateTime</td>
+        </tr>
+        <tr>
+            <th>Old Values</th>
+            <td>@Model.OldValues</td>
+        </tr>
+        <tr>
+            <th>New Values</th>
+            <td>@Model.NewValues</td>
+        </tr>
+        <tr>
+            <th>Affected Columns</th>
+            <td>@Model.AffectedColumns</td>
+        </tr>
+        <tr>
+            <th>Primary Key</th>
+            <td>@Model.PrimaryKey</td>
+        </tr>
+    </table>
+</div>

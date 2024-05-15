@@ -1,0 +1,70 @@
+﻿@model ComplaintMngSys.Models.UserAccountViewModel.UserProfileCRUDViewModel
+
+<div class="row">
+    <table class="CustomBlueTable" border="1" style=" width:100%;margin:1px auto;">
+        <tr>
+            <th>ID</th>
+            <td>@Model.UserProfileId</td>
+        </tr>
+        <tr>
+            <th>Profile Picture</th>
+            <td>
+                <div class="user-panel mt-2 pb-2 mb-2 d-flex">
+                    <div class="image">
+                        <img src="@Model.ProfilePicturePath" class="img-circle elevation-2" alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="#" class="d-block" onclick="ViewImage('@Model.ProfilePicturePath', '@Model.FirstName')">
+                            @Model.FirstName @Model.LastName
+                        </a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Application User Id</th>
+            <td>@Model.ApplicationUserId</td>
+        </tr>
+        <tr>
+            <th>First Name</th>
+            <td>@Model.FirstName</td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td>@Model.LastName</td>
+        </tr>
+        <tr>
+            <th>Phone Number</th>
+            <td>@Model.PhoneNumber</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>@Model.Email</td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td>@Model.Address</td>
+        </tr>
+        <tr>
+            <th>Country</th>
+            <td>@Model.Country</td>
+        </tr>
+
+        <tr>
+            <th>Created Date</th>
+            <td>@Model.CreatedDate</td>
+        </tr>
+        <tr>
+            <th>Modified Date</th>
+            <td>@Model.ModifiedDate</td>
+        </tr>
+        <tr>
+            <th>Created By</th>
+            <td>@Model.CreatedBy</td>
+        </tr>
+        <tr>
+            <th>Modified By</th>
+            <td>@Model.ModifiedBy</td>
+        </tr>
+    </table>
+</div>

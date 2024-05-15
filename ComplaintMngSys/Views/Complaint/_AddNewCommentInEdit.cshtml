@@ -1,0 +1,16 @@
+@model ComplaintMngSys.Models.ComplaintViewModel.ComplaintManageViewModel
+
+<hr />
+<form id="frmComplaintDetails" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="StatusUpdateViewModel.ComplaintId" value="@Model.ComplaintGridViewModel.Id" />
+
+    <div class="form-group">
+        <label asp-for="StatusUpdateViewModel.NewComment" class="control-label"></label>
+        <textarea id="NewComment" asp-for="StatusUpdateViewModel.NewComment" class="form-control"></textarea>
+        <span asp-validation-for="StatusUpdateViewModel.NewComment" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="button" value="Add Comment" class="btn btn-info" onclick="AddNewComment()">
+    </div>
+</form>

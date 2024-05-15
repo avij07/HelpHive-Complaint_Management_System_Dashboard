@@ -1,0 +1,68 @@
+﻿@model ComplaintMngSys.Models.CommonViewModel.SMTPEmailSettingViewModel
+
+@{
+    ViewData["Title"] = "Edit SMTP Email Setting";
+}
+
+
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="SMTPEmailSettingAddEdit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label"></label>
+                    <input asp-for="UserName" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Host" class="control-label"></label>
+                    <input asp-for="Host" class="form-control" />
+                    <span asp-validation-for="Host" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Port" class="control-label"></label>
+                    <input asp-for="Port" class="form-control" />
+                    <span asp-validation-for="Port" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input asp-for="IsSSL" /> @Html.DisplayNameFor(model => model.IsSSL)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FromEmail" class="control-label"></label>
+                    <input asp-for="FromEmail" class="form-control" />
+                    <span asp-validation-for="FromEmail" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FromFullName" class="control-label"></label>
+                    <input asp-for="FromFullName" class="form-control" />
+                    <span asp-validation-for="FromFullName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input asp-for="IsDefault" /> @Html.DisplayNameFor(model => model.IsDefault)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-info">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>

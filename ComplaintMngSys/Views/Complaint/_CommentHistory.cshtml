@@ -1,0 +1,34 @@
+@model ComplaintMngSys.Models.ComplaintViewModel.ComplaintManageViewModel
+
+<div class="row" style="width:100%; margin:0 auto;">
+    <table class="ItemTranTable" border="1">
+        <thead>
+            <tr>
+                <th>Comment</th>
+                <th>Comment By</th>
+                <th>Comment Date</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CommentList)
+            {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Message)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CreatedBy)
+    </td>
+    <td>
+        @String.Format("{0:f}", item.CreatedDate)
+    </td>
+    <td>
+        @if (Model.ComplaintGridViewModel.CurrentUserId == item.CreatedBy.Trim())
+        {
+<a href="#" class="btn btn-danger btn-xs" onclick="DeleteComment('@item.Id', false)">Delete</a>}
+    </td>
+</tr>}
+        </tbody>
+    </table>
+</div>

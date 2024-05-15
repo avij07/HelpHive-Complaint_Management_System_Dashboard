@@ -1,0 +1,106 @@
+﻿@model ComplaintMngSys.Models.ReportViewModel.ManageReportViewModel
+
+@{
+    ViewData["Title"] = "Complaint Status Summary Report";
+}
+
+<div class="wrapper">
+
+    <div class="col-sm-12" id="printableArea">
+        <div class="panel panel-hash">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <h5><b>Complaint Status Summary Report</b></h5>
+                    </div>
+                    <div class="col-sm-3 text-right hidden-print">
+                        <button class="btn btn-info" onclick="printDiv('printableArea')"><span class="fa fa-print"></span></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row hidden-print">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Start Date</label>
+                        <input type="date" id="StartDate" class="form-control" placeholder="Select Start Date" required>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>End Date</label>
+                        <input type="date" id="EndDate" class="form-control" placeholder="Select Start Date" required>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label><span></span></label>
+                        <input type="submit" value="Submit"
+                               onclick="ComplaintStatusSummaryReportCustomRange(document.getElementById('StartDate').value,document.getElementById('EndDate').value)"
+                               class="form-control btn btn-danger">
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label><span></span></label>
+                        <input type="button" class="form-control btn btn-success" value="Reset" onclick="ResetStatusSummaryReport()" />
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label>Showing Data on Date Range: @ViewBag.StartDate to @ViewBag.EndDate</label>
+                </div>
+            </div>
+
+            <h5>Total Complint: @Model.ComplaintStatusSummaryViewModel.Total</h5>
+            <hr />
+            <div class="panel-body scroll panel-height">
+                <table class="ItemTranTable">
+                    <thead>
+                        <tr>
+                            <th>New</th>
+                            <th>Submited</th>
+                            <th>In Progress</th>
+                            <th>Pending</th>
+                            <th>Resolved</th>
+
+                            <th>Rejected</th>
+                            <th>Blocker</th>
+                            <th>Closed</th>
+                            <th>ToDo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Model.ComplaintStatusSummaryViewModel.New</td>
+                            <td>@Model.ComplaintStatusSummaryViewModel.Submited</td>
+                            <td>@Model.ComplaintStatusSummaryViewModel.InProgress</td>
+                            <td>@Model.ComplaintStatusSummaryViewModel.Pending</td>
+                            <td>@Model.ComplaintStatusSummaryViewModel.Resolved</td>
+                            <td>@Model.ComplaintStatusSummaryViewModel.Rejected</td>
+                            <td>@Model.ComplaintStatusSummaryViewModel.Blocker</td>
+                            <td>@Model.ComplaintStatusSummaryViewModel.Closed</td>
+                            <td>@Model.ComplaintStatusSummaryViewModel.ToDo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .panel-heading {
+        padding: 0px 0px;
+        border-bottom: 0px solid transparent;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+</style>
+
+<script src="~/js/Report.js"></script>
+
